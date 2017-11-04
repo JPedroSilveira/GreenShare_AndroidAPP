@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">SeedShare</string>
+    <string name="bt_login">Entrar</string>
+    <string name="tv_register_question">Ainda não possui um cadastro?</string>
+    <string name="bt_register">Criar uma nova conta</string>
+    <string name="et_password">Insira sua senha</string>
+    <string name="et_email">Insira seu email</string>
+    <string name="action_return">Retornar</string>
+    <string name="bt_menu_register_one">Iniciar</string>
+    <string name="tv_title_register_one">Você está prestes a criar sua conta</string>
+    <string name="tv_description_register_one">Iniciaremos um passo a passo simples e rápido</string>
+    <string name="bt_start_register_one">Iniciar</string>
+    <string name="tv_name_question_register_two">Qual é o seu nome?</string>
+    <string name="et_hint_name">Nome</string>
+    <string name="tv_birthday_question_register_two">Qual é a sua data de nascimento?</string>
+    <string name="et_hint_birthday">dd-mm-yyyy</string>
+    <string name="bt_next">Avançar</string>
+    <string name="invalid_name">Nome inválido. Tente novamente</string>
+    <string name="invalid_birthday">Data inválida. Tente novamente</string>
+    <string name="invalid_user">Usuário inválido. Voltando a tela de login</string>
+    <string name="name">Nome:</string>
+    <string name="dateOfBirth">Data de Nascimento:</string>
+    <string name="emailRequest">Digite seu email:</string>
+    <string name="emailAlert">Seu email será usado para login e para uso de serviços de suporte</string>
+    <string name="passwordRequest">Digite sua senha:</string>
+    <string name="passwordConfirm">Digite sua senha novamente:</string>
+    <string name="etHintEmail">Email</string>
+    <string name="etHintPassword">Senha</string>
+    <string name="invalidPassword">Senha inválida</string>
+    <string name="invalidEmail">Email inválido</string>
+    <string name="invalidaConfirmPassword">Senha e senha de confirmação diferentes</string>
+    <string name="passwordAlert">Mínimo de 6 caracteres</string>
+    <string name="email">Email:</string>
+    <string name="btConfirm">Cadastrar</string>
+    <string name="btReset">Cancelar</string>
+    <string name="resetMessage">Resetando cadastro...</string>
+</resources>
