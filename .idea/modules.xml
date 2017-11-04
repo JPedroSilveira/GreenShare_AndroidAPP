@@ -3,8 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GreenShare_AndroidAPP.iml" filepath="$PROJECT_DIR$/GreenShare_AndroidAPP.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SeedShare.iml" filepath="$PROJECT_DIR$/SeedShare.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
