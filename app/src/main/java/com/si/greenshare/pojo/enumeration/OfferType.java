@@ -1,4 +1,4 @@
-package pojo.enumeration;
+package com.si.greenshare.pojo.enumeration;
 
 /**
  * Created by joao.silva.
