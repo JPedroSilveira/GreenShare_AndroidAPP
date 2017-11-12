@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SeedShare</string>
+    <string name="app_name">GreenShare</string>
     <string name="bt_login">Entrar</string>
     <string name="tv_register_question">Ainda não possui um cadastro?</string>
     <string name="bt_register">Criar uma nova conta</string>

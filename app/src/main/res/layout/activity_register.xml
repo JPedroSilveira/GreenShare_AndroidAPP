@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background_green"
-    tools:context="com.si.seedshare.register.RegisterActivity">
+    tools:context="com.si.greenshare.activity.register.RegisterActivity">
 
     <Button
         android:id="@+id/bt_start"
