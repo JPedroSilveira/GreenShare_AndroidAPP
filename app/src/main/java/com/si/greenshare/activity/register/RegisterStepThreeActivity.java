@@ -11,18 +11,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.si.greenshare.activity.LoginActivity;
 import com.si.greenshare.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.si.greenshare.helpers.IsHelperActivity;
 import com.si.greenshare.pojo.User;
 
-public class RegisterStepThreeActivity extends AppCompatActivity {
+public class RegisterStepThreeActivity extends IsHelperActivity {
 
-    private User user;
-    private Typeface font;
     private TextView tvName;
     private TextView tvDateOfBirth;
     private TextView tvEmailRequest;
@@ -36,17 +36,14 @@ public class RegisterStepThreeActivity extends AppCompatActivity {
     private EditText etPassword;
     private EditText etPasswordConfirm;
     private Button btNext;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_step_three);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        this.font = Typeface.createFromAsset(getAssets(), "font_agengSans.ttf");
         startComponents();
-        defineFonts();
-        setUserWithBundleContent();
+        getUserOfBundleContent();
         startButtons();
     }
 
@@ -56,7 +53,7 @@ public class RegisterStepThreeActivity extends AppCompatActivity {
         this.etPasswordConfirm = (EditText) findViewById(R.id.et_password_confirm);
         this.tvName = (TextView) findViewById(R.id.tv_name);
         this.tvDateOfBirth = (TextView) findViewById(R.id.tv_date_of_birth);
-        this.tvEmailRequest = (TextView) findViewById(R.id.tv_email_request);
+        this.tvEmailRequest = (TextView) findViewById(R.id.tv_question_name);
         this.tvPasswordRequest = (TextView) findViewById(R.id.tv_password_request);
         this.tvPasswordConfirm = (TextView) findViewById(R.id.tv_password_confirm);
         this.tvNameTitle = (TextView) findViewById(R.id.tv_dateOfBirth_title);
@@ -66,41 +63,14 @@ public class RegisterStepThreeActivity extends AppCompatActivity {
         this.btNext = (Button) findViewById(R.id.bt_next);
     }
 
-    private void defineFonts(){
-        this.etEmail.setTypeface(this.font);
-        this.etPassword.setTypeface(this.font);
-        this.etPasswordConfirm.setTypeface(this.font);
-        this.tvName.setTypeface(this.font);
-        this.tvDateOfBirth.setTypeface(this.font);
-        this.tvEmailRequest.setTypeface(this.font);
-        this.tvPasswordRequest.setTypeface(this.font);
-        this.tvPasswordConfirm.setTypeface(this.font);
-        this.tvNameTitle.setTypeface(this.font);
-        this.tvDateOfBirthTitle.setTypeface(this.font);
-        this.tvPasswordAlert.setTypeface(this.font);
-        this.tvEmailAlert.setTypeface(this.font);
-        this.btNext.setTypeface(this.font);
-    }
-
-    private void setUserWithBundleContent(){
-        Bundle bundle = getIntent().getExtras();
-        this.user = new User();
-        Date dateOfBirth = new Date();
-        dateOfBirth.setTime(bundle.getLong("DateOfBirth"));
-        this.user = new User();
-        this.user.setName(bundle.getString("Name"));
-        if(!this.user.isValid()){
-            toLoginActivity();
-            Toast.makeText(RegisterStepThreeActivity.this,R.string.invalid_user, Toast.LENGTH_SHORT).show();
-            finish();
+    private void getUserOfBundleContent(){
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            this.user = new Gson().fromJson(extras.getString("User"), User.class);
         }else{
-            setTextViewNameAndEmail();
+            Toast.makeText(RegisterStepThreeActivity.this,R.string.unexpectedErrorBundle, Toast.LENGTH_SHORT).show();
+            toLoginActivity();
         }
-    }
-
-    private void setTextViewNameAndEmail(){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        this.tvName.setText(this.user.getName());
     }
 
     private void toLoginActivity(){

@@ -1,20 +1,16 @@
 package com.si.greenshare.activity.register;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.si.greenshare.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private Typeface font;
-    private TextView tvTitle, tvDescription;
     private Button btStart;
 
     @Override
@@ -23,27 +19,12 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        this.font = Typeface.createFromAsset(getAssets(), "font_agengSans.ttf");
         startComponents();
-        defineFonts();
-        setUserWithBundleContent();
         startButtons();
     }
 
     private void startComponents() {
-        this.tvTitle = (TextView) findViewById(R.id.tv_email_request);
-        this.tvDescription = (TextView) findViewById(R.id.tv_description);
         this.btStart = (Button) findViewById(R.id.bt_start);
-    }
-
-    private void defineFonts(){
-        this.tvTitle.setTypeface(this.font);
-        this.tvDescription.setTypeface(this.font);
-        this.btStart.setTypeface(this.font);
-    }
-
-    private void setUserWithBundleContent(){
-
     }
 
     private void startButtons(){

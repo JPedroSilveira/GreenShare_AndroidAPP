@@ -1,6 +1,12 @@
 package com.si.greenshare.helpers;
 
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+
+import com.si.greenshare.R;
 
 import java.util.Date;
 import java.util.List;
@@ -9,35 +15,33 @@ import java.util.regex.Pattern;
 /**
  * Created by joao.silva.
  */
-
-public class IsHelper {
-
+public class IsHelperActivity extends AppCompatActivity {
     private static final String EMAIL_PATTERN = "(?:(?:\\r\\n)?[ \\t])*(?:(?:(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\"(?:[^\\\"\\r\\\\]|\\\\.|(?:(?:\\r\\n)?[ \\t]))*\"(?:(?:\\r\\n)?[ \\t])*)(?:\\.(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\"(?:[^\\\"\\r\\\\]|\\\\.|(?:(?:\\r\\n)?[ \\t]))*\"(?:(?:\\r\\n)?[ \\t])*))*@(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*)(?:\\.(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*))*|(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\"(?:[^\\\"\\r\\\\]|\\\\.|(?:(?:\\r\\n)?[ \\t]))*\"(?:(?:\\r\\n)?[ \\t])*)*\\<(?:(?:\\r\\n)?[ \\t])*(?:@(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*)(?:\\.(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*))*(?:,@(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*)(?:\\.(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*))*)*:(?:(?:\\r\\n)?[ \\t])*)?(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\"(?:[^\\\"\\r\\\\]|\\\\.|(?:(?:\\r\\n)?[ \\t]))*\"(?:(?:\\r\\n)?[ \\t])*)(?:\\.(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\"(?:[^\\\"\\r\\\\]|\\\\.|(?:(?:\\r\\n)?[ \\t]))*\"(?:(?:\\r\\n)?[ \\t])*))*@(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*)(?:\\.(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*))*\\>(?:(?:\\r\\n)?[ \\t])*)|(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\"(?:[^\\\"\\r\\\\]|\\\\.|(?:(?:\\r\\n)?[ \\t]))*\"(?:(?:\\r\\n)?[ \\t])*)*:(?:(?:\\r\\n)?[ \\t])*(?:(?:(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\"(?:[^\\\"\\r\\\\]|\\\\.|(?:(?:\\r\\n)?[ \\t]))*\"(?:(?:\\r\\n)?[ \\t])*)(?:\\.(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\"(?:[^\\\"\\r\\\\]|\\\\.|(?:(?:\\r\\n)?[ \\t]))*\"(?:(?:\\r\\n)?[ \\t])*))*@(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*)(?:\\.(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*))*|(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\"(?:[^\\\"\\r\\\\]|\\\\.|(?:(?:\\r\\n)?[ \\t]))*\"(?:(?:\\r\\n)?[ \\t])*)*\\<(?:(?:\\r\\n)?[ \\t])*(?:@(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*)(?:\\.(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*))*(?:,@(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*)(?:\\.(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*))*)*:(?:(?:\\r\\n)?[ \\t])*)?(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\"(?:[^\\\"\\r\\\\]|\\\\.|(?:(?:\\r\\n)?[ \\t]))*\"(?:(?:\\r\\n)?[ \\t])*)(?:\\.(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\"(?:[^\\\"\\r\\\\]|\\\\.|(?:(?:\\r\\n)?[ \\t]))*\"(?:(?:\\r\\n)?[ \\t])*))*@(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*)(?:\\.(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*))*\\>(?:(?:\\r\\n)?[ \\t])*)(?:,\\s*(?:(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\"(?:[^\\\"\\r\\\\]|\\\\.|(?:(?:\\r\\n)?[ \\t]))*\"(?:(?:\\r\\n)?[ \\t])*)(?:\\.(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\"(?:[^\\\"\\r\\\\]|\\\\.|(?:(?:\\r\\n)?[ \\t]))*\"(?:(?:\\r\\n)?[ \\t])*))*@(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*)(?:\\.(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*))*|(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\"(?:[^\\\"\\r\\\\]|\\\\.|(?:(?:\\r\\n)?[ \\t]))*\"(?:(?:\\r\\n)?[ \\t])*)*\\<(?:(?:\\r\\n)?[ \\t])*(?:@(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*)(?:\\.(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*))*(?:,@(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*)(?:\\.(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*))*)*:(?:(?:\\r\\n)?[ \\t])*)?(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\"(?:[^\\\"\\r\\\\]|\\\\.|(?:(?:\\r\\n)?[ \\t]))*\"(?:(?:\\r\\n)?[ \\t])*)(?:\\.(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\"(?:[^\\\"\\r\\\\]|\\\\.|(?:(?:\\r\\n)?[ \\t]))*\"(?:(?:\\r\\n)?[ \\t])*))*@(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*)(?:\\.(?:(?:\\r\\n)?[ \\t])*(?:[^()<>@,;:\\\\\".\\[\\] \\000-\\031]+(?:(?:(?:\\r\\n)?[ \\t])+|\\Z|(?=[\\[\"()<>@,;:\\\\\".\\[\\]]))|\\[([^\\[\\]\\r\\\\]|\\\\.)*\\](?:(?:\\r\\n)?[ \\t])*))*\\>(?:(?:\\r\\n)?[ \\t])*))*)?;\\s*)";
 
     private static final Pattern PATTERN = Pattern.compile(EMAIL_PATTERN);
 
-    protected It is(String string) {
-        return new It(string);
+    protected IsHelperActivity.It is(String string) {
+        return new IsHelperActivity.It(string);
     }
 
-    protected It is(int number) {
-        return new It(number);
+    protected IsHelperActivity.It is(int number) {
+        return new IsHelperActivity.It(number);
     }
 
-    protected It is(short number) {
-        return new It(number);
+    protected IsHelperActivity.It is(short number) {
+        return new IsHelperActivity.It(number);
     }
 
-    protected It is(long number) {
-        return new It(number);
+    protected IsHelperActivity.It is(long number) {
+        return new IsHelperActivity.It(number);
     }
 
-    protected It is(float number) {
-        return new It(number);
+    protected IsHelperActivity.It is(float number) {
+        return new IsHelperActivity.It(number);
     }
 
-    protected It is(double number) {
-        return new It(number);
+    protected IsHelperActivity.It is(double number) {
+        return new IsHelperActivity.It(number);
     }
 
     protected boolean isNullOrEmpty(String string) {
@@ -68,12 +72,26 @@ public class IsHelper {
         return number>0;
     }
 
-    public Boolean isValidEmail(String email) {
+    protected Boolean isValidEmail(String email) {
         return PATTERN.matcher(email).matches();
     }
 
-    public String concatStringList(List<String> list){
+    protected String concatStringList(List<String> list){
         return TextUtils.join(". ", list);
+    }
+
+    protected void configureBasicActionBar(ActionBar actionBar){
+        actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    protected Drawable getDrawableInvalidBackgroundField(){
+        Resources res = getResources();
+        return res.getDrawable(R.drawable.field_invalid_background);
+    }
+
+    protected Drawable getDrawableValidBackgroundField(){
+        Resources res = getResources();
+        return res.getDrawable(R.drawable.field_valid_background);
     }
 
     public class It
@@ -188,39 +206,39 @@ public class IsHelper {
             return false;
         }
 
-        public Or orSmallerThan(double biggerNumber) {
+        public IsHelperActivity.It.Or orSmallerThan(double biggerNumber) {
             if (this.type == 0) {
                 if (this.string.length() < biggerNumber) {
-                    return new Or(this, true);
+                    return new IsHelperActivity.It.Or(this, true);
                 }
-                return new Or(this, false);
+                return new IsHelperActivity.It.Or(this, false);
             } else if (this.type == 1) {
                 if (this.integer < biggerNumber) {
-                    return new Or(this, true);
+                    return new IsHelperActivity.It.Or(this, true);
                 }
-                return new Or(this, false);
+                return new IsHelperActivity.It.Or(this, false);
             } else if (this.type == 2) {
                 if (this.shortV < biggerNumber) {
-                    return new Or(this, true);
+                    return new IsHelperActivity.It.Or(this, true);
                 }
-                return new Or(this, false);
+                return new IsHelperActivity.It.Or(this, false);
             } else if (this.type == 3) {
                 if (this.longV < biggerNumber) {
-                    return new Or(this, true);
+                    return new IsHelperActivity.It.Or(this, true);
                 }
-                return new Or(this, false);
+                return new IsHelperActivity.It.Or(this, false);
             } else if (this.type == 4) {
                 if (this.floatV < biggerNumber) {
-                    return new Or(this, true);
+                    return new IsHelperActivity.It.Or(this, true);
                 }
-                return new Or(this, false);
+                return new IsHelperActivity.It.Or(this, false);
             } else if (this.type == 5) {
                 if (this.doubleV < biggerNumber) {
-                    return new Or(this, true);
+                    return new IsHelperActivity.It.Or(this, true);
                 }
-                return new Or(this, false);
+                return new IsHelperActivity.It.Or(this, false);
             }
-            return new Or(this, null);
+            return new IsHelperActivity.It.Or(this, null);
         }
 
         public boolean biggerThan(double smallerNumber) {
@@ -257,77 +275,77 @@ public class IsHelper {
             return false;
         }
 
-        public Or orBiggerThan(double smallerNumber) {
+        public IsHelperActivity.It.Or orBiggerThan(double smallerNumber) {
             if (this.type == 0) {
                 if (this.string.length() > smallerNumber) {
-                    return new Or(this, true);
+                    return new IsHelperActivity.It.Or(this, true);
                 }
-                return new Or(this, false);
+                return new IsHelperActivity.It.Or(this, false);
             } else if (this.type == 1) {
                 if (this.integer > smallerNumber) {
-                    return new Or(this, true);
+                    return new IsHelperActivity.It.Or(this, true);
                 }
-                return new Or(this, false);
+                return new IsHelperActivity.It.Or(this, false);
             } else if (this.type == 2) {
                 if (this.shortV > smallerNumber) {
-                    return new Or(this, true);
+                    return new IsHelperActivity.It.Or(this, true);
                 }
-                return new Or(this, false);
+                return new IsHelperActivity.It.Or(this, false);
             } else if (this.type == 3) {
                 if (this.longV > smallerNumber) {
-                    return new Or(this, true);
+                    return new IsHelperActivity.It.Or(this, true);
                 }
-                return new Or(this, false);
+                return new IsHelperActivity.It.Or(this, false);
             } else if (this.type == 4) {
                 if (this.floatV > smallerNumber) {
-                    return new Or(this, true);
+                    return new IsHelperActivity.It.Or(this, true);
                 }
-                return new Or(this, false);
+                return new IsHelperActivity.It.Or(this, false);
             } else if (this.type == 5) {
                 if (this.doubleV > smallerNumber) {
-                    return new Or(this, true);
+                    return new IsHelperActivity.It.Or(this, true);
                 }
-                return new Or(this, false);
+                return new IsHelperActivity.It.Or(this, false);
             }
-            return new Or(this, null);
+            return new IsHelperActivity.It.Or(this, null);
         }
 
-        public And between(double smallerNumber) {
+        public IsHelperActivity.It.And between(double smallerNumber) {
             if (this.type == 0) {
                 if (this.string.length() > smallerNumber) {
-                    return new And(this, true);
+                    return new IsHelperActivity.It.And(this, true);
                 }
             } else if (this.type == 1) {
                 if (this.integer > smallerNumber) {
-                    return new And(this, true);
+                    return new IsHelperActivity.It.And(this, true);
                 }
             } else if (this.type == 2) {
                 if (this.shortV > smallerNumber) {
-                    return new And(this, true);
+                    return new IsHelperActivity.It.And(this, true);
                 }
             } else if (this.type == 3) {
                 if (this.longV > smallerNumber) {
-                    return new And(this, true);
+                    return new IsHelperActivity.It.And(this, true);
                 }
             } else if (this.type == 4) {
                 if (this.floatV > smallerNumber) {
-                    return new And(this, true);
+                    return new IsHelperActivity.It.And(this, true);
                 }
             } else if (this.type == 5) {
                 if (this.doubleV > smallerNumber) {
-                    return new And(this, true);
+                    return new IsHelperActivity.It.And(this, true);
                 }
             }
-            return new And(this, false);
+            return new IsHelperActivity.It.And(this, false);
         }
 
         public class And {
 
-            private It it;
+            private IsHelperActivity.It it;
             private Short type;
             private boolean isTrue;
 
-            public And(It it, Boolean isTrue) {
+            public And(IsHelperActivity.It it, Boolean isTrue) {
                 this.it = it;
                 this.isTrue = isTrue;
                 this.type = it.type;
@@ -355,11 +373,11 @@ public class IsHelper {
 
         public class Or {
 
-            private It it;
+            private IsHelperActivity.It it;
             private Short type;
             private Boolean isTrue;
 
-            public Or(It it, Boolean isTrue) {
+            public Or(IsHelperActivity.It it, Boolean isTrue) {
                 this.it = it;
                 this.isTrue = isTrue;
                 this.type = it.type;

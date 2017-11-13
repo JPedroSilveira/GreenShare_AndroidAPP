@@ -4,32 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background_green"
+    android:background="@color/basicText"
     tools:context="com.si.greenshare.activity.register.RegisterActivity">
 
     <Button
         android:id="@+id/bt_start"
         android:layout_width="0dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="213dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="64dp"
         android:layout_marginRight="64dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/gradient_background_green_light"
-        android:fontFamily="sans-serif-smallcaps"
+        android:layout_marginTop="24dp"
+        android:background="@color/secondaryDarkColor"
         android:text="@string/bt_next"
         android:textColor="#FFFFFFFF"
         android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
-        android:id="@+id/tv_email_request"
+        android:id="@+id/tv_question_name"
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginTop="55dp"
@@ -45,7 +42,7 @@
     <TextView
         android:id="@+id/tv_description"
         android:layout_width="0dp"
-        android:layout_height="69dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginTop="8dp"
@@ -55,6 +52,21 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_email_request" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_question_name" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="96dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        android:cropToPadding="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_description"
+        app:srcCompat="@mipmap/ic_logo_foreground" />
 
 </android.support.constraint.ConstraintLayout>

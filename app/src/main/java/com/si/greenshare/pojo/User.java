@@ -24,8 +24,6 @@ public class User extends AbstractEntity<User> implements Serializable {
 
     private Long id;
 
-    private String nickname;
-
     private String name;
 
     private String cpf;
@@ -64,10 +62,9 @@ public class User extends AbstractEntity<User> implements Serializable {
         super();
     }
 
-    public User(String cpf, String nickname, String name, String email, String password, Boolean isLegalPerson, Address address, String phoneNumber) {
+    public User(String cpf, String name, String email, String password, Boolean isLegalPerson, Address address, String phoneNumber) {
         super();
         this.email = email;
-        this.nickname = nickname;
         this.name = name;
         this.password = password;
         this.isLegalPerson = isNull(isLegalPerson) ? false : isLegalPerson;
@@ -88,13 +85,10 @@ public class User extends AbstractEntity<User> implements Serializable {
     public boolean isValid() {
         this.validationErrors.clear();
 
-        if (isNullOrEmpty(this.nickname) || is(this.nickname).orSmallerThan(1).orBiggerThan(100)) {
-            this.validationErrors.add("Apelido inválido.");
-        }
         if (isNullOrEmpty(this.name) || is(this.name).orSmallerThan(1).orBiggerThan(100)) {
             this.validationErrors.add("Nome inválido.");
         }
-        if (isNullOrEmpty(this.email) || is(this.email).orSmallerThan(1).orBiggerThan(100) || isNotValidEmail()) {
+        if (isNullOrEmpty(this.email) || is(this.email).orSmallerThan(1).orBiggerThan(100) || isNotValidEmailRegex()) {
             this.validationErrors.add("Email inválido.");
         }
         if (isNotNull(this.phoneNumber) && (is(this.phoneNumber).orSmallerThan(1).orBiggerThan(20) || !StringUtils.isNumeric(this.phoneNumber))) {
@@ -122,10 +116,46 @@ public class User extends AbstractEntity<User> implements Serializable {
         return this.validationErrors.isEmpty();
     }
 
+    public boolean isValidEmail(){
+        this.validationErrors.clear();
+        if (isNullOrEmpty(this.email)) {
+            this.validationErrors.add("Email inválido.");
+        }else if(is(this.email).orSmallerThan(1).orBiggerThan(100)){
+            this.validationErrors.add("Email deve conter entre 1 e 100 caracteres.");
+        }else if(isNotValidEmailRegex()){
+            this.validationErrors.add("Formato de email inválido.");
+        }
+        return this.validationErrors.isEmpty();
+    }
+
+    public boolean isValidName(){
+        this.validationErrors.clear();
+        if (isNullOrEmpty(this.name)) {
+            this.validationErrors.add("Nome inválido.");
+        }else{
+            if(is(this.name).orSmallerThan(1).orBiggerThan(100)){
+                this.validationErrors.add("Nome deve ter entre 1 e 100 caracteres.");
+            }
+        }
+        return this.validationErrors.isEmpty();
+    }
+
+    public boolean isValidPhoneNumber(){
+        this.validationErrors.clear();
+        if (isNotNull(this.phoneNumber)) {
+            if(is(this.phoneNumber).orSmallerThan(1).orBiggerThan(20)){
+                this.validationErrors.add("Número deve conter entre 1 a 20 caracteres.");
+            }
+            if(!StringUtils.isNumeric(this.phoneNumber)){
+                this.validationErrors.add("Número de telefone deve conter apenasa números.");
+            }
+        }
+        return this.validationErrors.isEmpty();
+    }
+
     @Override
     public void update(User e) {
         this.name = e.getName();
-        this.nickname = e.getNickname();
     }
 
     public boolean hasInvalidPassword() {
@@ -221,13 +251,13 @@ public class User extends AbstractEntity<User> implements Serializable {
     }
 
     @JsonIgnore
-    public Boolean isValidEmail() {
+    private Boolean isValidEmailRegex() {
         return PATTERN.matcher(this.email).matches();
     }
 
     @JsonIgnore
-    public Boolean isNotValidEmail() {
-        return !isValidEmail();
+    public Boolean isNotValidEmailRegex() {
+        return !isValidEmailRegex();
     }
 
     public List<PostComment> getPostComments() {
@@ -240,14 +270,6 @@ public class User extends AbstractEntity<User> implements Serializable {
 
     public String getPhoneNumber() {
         return this.phoneNumber;
-    }
-
-    public void setNickname(String name) {
-        this.name = name;
-    }
-
-    public String getNickname() {
-        return nickname;
     }
 
     public void setId(Long id) {
