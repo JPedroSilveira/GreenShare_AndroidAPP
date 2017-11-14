@@ -9,8 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 import com.si.greenshare.helpers.CPFHelper;
 
 /**
@@ -116,37 +114,45 @@ public class User extends AbstractEntity<User> implements Serializable {
         return this.validationErrors.isEmpty();
     }
 
-    public boolean isValidEmail(){
+    public boolean isValidPassword() {
+        this.validationErrors.clear();
+        if (hasInvalidPassword()) {
+            this.validationErrors.add("Senha inválida.");
+        }
+        return this.validationErrors.isEmpty();
+    }
+
+    public boolean isValidEmail() {
         this.validationErrors.clear();
         if (isNullOrEmpty(this.email)) {
             this.validationErrors.add("Email inválido.");
-        }else if(is(this.email).orSmallerThan(1).orBiggerThan(100)){
+        } else if (is(this.email).orSmallerThan(1).orBiggerThan(100)) {
             this.validationErrors.add("Email deve conter entre 1 e 100 caracteres.");
-        }else if(isNotValidEmailRegex()){
+        } else if (isNotValidEmailRegex()) {
             this.validationErrors.add("Formato de email inválido.");
         }
         return this.validationErrors.isEmpty();
     }
 
-    public boolean isValidName(){
+    public boolean isValidName() {
         this.validationErrors.clear();
         if (isNullOrEmpty(this.name)) {
             this.validationErrors.add("Nome inválido.");
-        }else{
-            if(is(this.name).orSmallerThan(1).orBiggerThan(100)){
+        } else {
+            if (is(this.name).orSmallerThan(1).orBiggerThan(100)) {
                 this.validationErrors.add("Nome deve ter entre 1 e 100 caracteres.");
             }
         }
         return this.validationErrors.isEmpty();
     }
 
-    public boolean isValidPhoneNumber(){
+    public boolean isValidPhoneNumber() {
         this.validationErrors.clear();
         if (isNotNull(this.phoneNumber)) {
-            if(is(this.phoneNumber).orSmallerThan(1).orBiggerThan(20)){
+            if (is(this.phoneNumber).orSmallerThan(1).orBiggerThan(20)) {
                 this.validationErrors.add("Número deve conter entre 1 a 20 caracteres.");
             }
-            if(!StringUtils.isNumeric(this.phoneNumber)){
+            if (!StringUtils.isNumeric(this.phoneNumber)) {
                 this.validationErrors.add("Número de telefone deve conter apenasa números.");
             }
         }

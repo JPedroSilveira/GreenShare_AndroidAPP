@@ -1,5 +1,7 @@
 package com.si.greenshare.internal_data_base;
 
+import android.util.Base64;
+
 /**
  * Created by joao.silva.
  */
@@ -16,6 +18,10 @@ public class UserAuth {
     public UserAuth(String email, String password) {
         this.email = email;
         this.password = password;
+    }
+
+    public String getAuthHeader(){
+        return "Basic " + Base64.encodeToString((this.email + ":" + this.password).getBytes(), Base64.NO_WRAP);
     }
 
     public String getPassword() {

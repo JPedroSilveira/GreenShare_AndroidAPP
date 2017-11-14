@@ -13,7 +13,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
- * Created by jpedr.
+ * Created by joao.silva.
  */
 
 public interface WSUser {

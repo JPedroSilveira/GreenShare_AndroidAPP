@@ -2,15 +2,15 @@ package com.si.greenshare.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.si.greenshare.AuthHelper;
 import com.si.greenshare.activity.register.RegisterActivity;
+import com.si.greenshare.helpers.IsHelperActivity;
 import com.si.greenshare.internal_data_base.UserAuth;
 import com.si.greenshare.pojo.User;
 import com.si.greenshare.R;
@@ -18,7 +18,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends IsHelperActivity {
 
     private Button btLogin, btRegister;
     private EditText etEmail, etPassword;
@@ -46,7 +46,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 toRegisterActivity();
-                finish();
             }
         });
     }
@@ -62,10 +61,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void startComponents() {
-        this.btLogin = (Button) findViewById(R.id.bt_login);
-        this.btRegister = (Button) findViewById(R.id.bt_register);
-        this.etEmail = (EditText) findViewById(R.id.et_email);
-        this.etPassword = (EditText) findViewById(R.id.et_password);
+        this.btLogin =  findViewById(R.id.bt_login);
+        this.btRegister =  findViewById(R.id.bt_register);
+        this.etEmail =  findViewById(R.id.et_email);
+        this.etPassword = findViewById(R.id.et_password);
     }
 
     private void loadSavedUserAuth(){
@@ -85,19 +84,15 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(Call<User> call, Response<User> response) {
                     Context context = getApplicationContext();
                     if(response.isSuccessful()){
-                        Toast.makeText(context, "Logado com sucesso!", Toast.LENGTH_LONG).show();
+                        showToast(context, getString(R.string.valid_login));
                         if(saveUserAuth()){
                             toMenuActivity();
-                            finish();
                         }
                     }else{
                         deleteSavedUserAuth();
-                        Toast.makeText(context, "Login inválido!", Toast.LENGTH_LONG).show();
+                        showToast(context, getString(R.string.invalid_login));
                         if(isFirstTime){
-                            setContentView(R.layout.activity_login);
-                            getSupportActionBar().hide();
-                            startComponents();
-                            startButtons();
+                            startActivity();
                         }
                     }
                 }
@@ -105,9 +100,11 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Call<User> call, Throwable t) {
                     Context context = getApplicationContext();
-                    Toast.makeText(context, "Falha ao consultar servidor, tente novamente.", Toast.LENGTH_LONG).show();
+                    showToast(context, getString(R.string.login_failed));
                 }
             });
+        }else{
+            startActivity();
         }
     }
 
@@ -119,4 +116,13 @@ public class LoginActivity extends AppCompatActivity {
         this.authHelper.deleteSavedUserAuth();
     }
 
+    private void startActivity(){
+        setContentView(R.layout.activity_login);
+        ActionBar actionBar = getSupportActionBar();
+        if(isNotNull(actionBar)){
+            actionBar.hide();
+        }
+        startComponents();
+        startButtons();
+    }
 }

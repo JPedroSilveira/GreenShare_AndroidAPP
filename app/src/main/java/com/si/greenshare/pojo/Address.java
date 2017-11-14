@@ -93,6 +93,38 @@ public class Address extends AbstractEntity<Address> implements Serializable {
         return this.validationErrors.isEmpty();
     }
 
+    public boolean isValidNeighborhood(){
+        this.validationErrors.clear();
+        if (isNull(this.neighborhood) || is(this.neighborhood).orSmallerThan(1).orBiggerThan(200)) {
+            this.validationErrors.add("O bairro não pode ser nulo e deve conter entre 1 e 200 caracteres.");
+        }
+        return this.validationErrors.isEmpty();
+    }
+
+    public boolean isValidAddressName(){
+        this.validationErrors.clear();
+        if (isNull(this.addressName) || is(this.addressName).orSmallerThan(1).orBiggerThan(200)) {
+            this.validationErrors.add("O endereço não pode ser nulo e deve conter entre 1 e 200 caracteres.");
+        }
+        return this.validationErrors.isEmpty();
+    }
+
+    public boolean isValidNumber(){
+        this.validationErrors.clear();
+        if (isNull(this.number) || is(this.number).smallerThan(1)) {
+            this.validationErrors.add("O número não pode ser nulo ou menor que um.");
+        }
+        return this.validationErrors.isEmpty();
+    }
+
+    public boolean isValidAddressType(){
+        this.validationErrors.clear();
+        if (isNull(this.type) || AddressType.exists(this.type)) {
+            this.validationErrors.add("O tipo de endereço é inválido.");
+        }
+        return this.validationErrors.isEmpty();
+    }
+
     public Long getId() {
         return this.id;
     }

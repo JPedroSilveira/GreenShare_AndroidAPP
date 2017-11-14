@@ -1,10 +1,17 @@
 package com.si.greenshare.helpers;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.si.greenshare.R;
 
@@ -54,6 +61,20 @@ public class IsHelperActivity extends AppCompatActivity {
 
     protected boolean isNotNull(Object obj) {
         return !isNull(obj);
+    }
+
+    protected void showToast(Context context, String message){
+        showToast(context, message, null);
+    }
+    protected void showToast(Context context, String message, Integer length){
+        if(isNull(length)){
+            length = Toast.LENGTH_LONG;
+        }
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast,
+                (ViewGroup) findViewById(R.id.custom_toast_container));
+        Toast toast = Toast.makeText(context, message,length);
+        toast.show();
     }
 
     protected boolean isNullOrFromTheFuture(Date date) {

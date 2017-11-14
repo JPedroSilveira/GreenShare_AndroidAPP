@@ -36,5 +36,24 @@
     <string name="btConfirm">Cadastrar</string>
     <string name="btReset">Cancelar</string>
     <string name="resetMessage">Resetando cadastro...</string>
-    <string name="unexpectedErrorBundle">Erro inesperado no sistema, voltando a tela anterior...</string>
+    <string name="unexpectedErrorReturnActivity">Erro inesperado no sistema, voltando a tela anterior...</string>
+    <string name="invalid_login">Login inválido</string>
+    <string name="valid_login">Logado com sucesso</string>
+    <string name="login_failed">Falha ao conectar com servidor, tente novamente.</string>
+    <string name="country_request">Selecione seu país</string>
+    <string name="state_request">Selecione seu estado</string>
+    <string name="city_request">Selecione sua cidade</string>
+    <string name="flower_shop">Floricultura</string>
+    <string name="natural_person">Pessoa Física</string>
+    <string name="connection_error">Erro de conexão, tentando novamente...</string>
+    <string name="country_not_selected">Selecione um país</string>
+    <string name="state_not_selected">Selecione um estado</string>
+    <string name="city_not_selected">Selecione uma cidade</string>
+    <string name="address_number">Ex.: 5222</string>
+    <string name="neighborhood_example">Ex.: Bairro Niteroi</string>
+    <string name="address_name_example">Ex.: Rua Ana Maria</string>
+    <string name="address_skip">Pular endereço</string>
+    <string name="address_skip_alert">Sem o cadastro do endereço não é possível realizar ofertas e doações.</string>
+    <string name="invalid_number_address">Número do endereço inválido</string>
+    <string name="invalid_address">Cidade inválida, tente novamente</string>
 </resources>

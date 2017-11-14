@@ -1,7 +1,6 @@
 package com.si.greenshare.activity.register;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,10 +28,10 @@ public class RegisterStepTwoActivity extends IsHelperActivity {
     }
 
     private void startComponents() {
-        this.etName = (EditText) findViewById(R.id.et_name);
-        this.etEmail = (EditText) findViewById(R.id.et_email);
-        this.etPhoneNumber = (EditText) findViewById(R.id.et_phone_number);
-        this.btNext = (Button) findViewById(R.id.bt_next);
+        this.etName = findViewById(R.id.et_name);
+        this.etEmail = findViewById(R.id.et_email);
+        this.etPhoneNumber = findViewById(R.id.et_phone_number);
+        this.btNext = findViewById(R.id.bt_next);
     }
 
     private void startButtons() {
@@ -46,21 +45,21 @@ public class RegisterStepTwoActivity extends IsHelperActivity {
                 user.setPhoneNumber(etPhoneNumber.getText().toString());
                 validBackgroundFields();
                 if (!user.isValidEmail()) {
-                    Toast.makeText(RegisterStepTwoActivity.this, concatStringList(user.getValidationErrors()), Toast.LENGTH_SHORT).show();
+                    showToast(getApplicationContext(), concatStringList(user.getValidationErrors()), Toast.LENGTH_SHORT);
                     etEmail.setBackground(getDrawableInvalidBackgroundField());
                     success = false;
                 }
                 if (!user.isValidName()) {
-                    Toast.makeText(RegisterStepTwoActivity.this, concatStringList(user.getValidationErrors()), Toast.LENGTH_SHORT).show();
+                    showToast(getApplicationContext(), concatStringList(user.getValidationErrors()), Toast.LENGTH_SHORT);
                     etName.setBackground(getDrawableInvalidBackgroundField());
                     success = false;
                 }
                 if (!user.isValidPhoneNumber()) {
-                    Toast.makeText(RegisterStepTwoActivity.this, concatStringList(user.getValidationErrors()), Toast.LENGTH_SHORT).show();
+                    showToast(getApplicationContext(), concatStringList(user.getValidationErrors()), Toast.LENGTH_SHORT);
                     etPhoneNumber.setBackground(getDrawableInvalidBackgroundField());
                     success = false;
                 }
-                if(success){
+                if (success) {
                     toRegisterStepThreeActivity();
                 }
             }
@@ -68,12 +67,12 @@ public class RegisterStepTwoActivity extends IsHelperActivity {
     }
 
     private void toRegisterStepThreeActivity() {
-        Intent itRegisterStepThreeActivity = new Intent(RegisterStepTwoActivity.this, RegisterStepThreeActivity.class);
+        Intent itRegisterStepThreeActivity = new Intent(this, RegisterStepThreeActivity.class);
         itRegisterStepThreeActivity.putExtra("User", this.user);
         startActivity(itRegisterStepThreeActivity);
     }
 
-    private void validBackgroundFields(){
+    private void validBackgroundFields() {
         etEmail.setBackground(getDrawableValidBackgroundField());
         etName.setBackground(getDrawableValidBackgroundField());
         etPhoneNumber.setBackground(getDrawableValidBackgroundField());
